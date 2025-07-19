@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower Builder - Collaborative Multiplayer Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <!-- Header -->
+        <header class="game-header">
+            <h1>🏗️ Tower Builder</h1>
+            <div class="game-stats">
+                <div class="stat">
+                    <span class="stat-label">Height:</span>
+                    <span id="tower-height">0</span> blocks
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Players:</span>
+                    <span id="player-count">0</span> online
+                </div>
+            </div>
+        </header>
+
+        <!-- Game Canvas -->
+        <div id="game-canvas-container">
+            <canvas id="game-canvas"></canvas>
+            <div id="loading-screen">
+                <div class="loading-spinner"></div>
+                <p>Connecting to game...</p>
+            </div>
+        </div>
+
+        <!-- Controls Panel -->
+        <div class="controls-panel">
+            <div class="control-group">
+                <label for="player-name">Your Name:</label>
+                <input type="text" id="player-name" placeholder="Enter your name" maxlength="20">
+            </div>
+            
+            <div class="control-group">
+                <label>Block Color:</label>
+                <div class="color-picker">
+                    <input type="color" id="block-color" value="#ff6b6b">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Controls:</label>
+                <div class="controls-info">
+                    <p>🖱️ Click to place blocks</p>
+                    <p>🔄 Mouse wheel to zoom</p>
+                    <p>🖱️ Drag to rotate view</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Players List -->
+        <div class="players-panel">
+            <h3>👥 Players Online</h3>
+            <div id="players-list"></div>
+        </div>
+
+        <!-- Chat Panel -->
+        <div class="chat-panel">
+            <h3>💬 Chat</h3>
+            <div id="chat-messages"></div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Type a message..." maxlength="100">
+                <button id="send-chat">Send</button>
+            </div>
+        </div>
+
+        <!-- Notifications -->
+        <div id="notifications"></div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html> 
